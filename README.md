@@ -1,2 +1,3 @@
 # nextjs_online_store
 Учебный проект на фреймворке Next.js 16 по созданию онлайн магазина
+Стек: Next.js, Tailwind CSS
