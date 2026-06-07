@@ -1,5 +1,5 @@
 import { RacketCard } from '@/components/RacketCard';
-import { rackets as cardsData } from '../../mock';
+import { rackets as cardsData } from '@mock';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 

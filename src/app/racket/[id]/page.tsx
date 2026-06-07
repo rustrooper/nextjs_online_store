@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { rackets } from '../../../../mock';
+import { rackets } from '@mock';
 import { RacketCard } from '@/components/RacketCard';
 
 export function generateStaticParams() {

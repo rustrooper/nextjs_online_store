@@ -1,6 +1,6 @@
 import { BrandFilter } from '@/components/BrandFilter';
 import { RacketCard } from '@/components/RacketCard';
-import { rackets as cardsData } from '../../../mock';
+import { rackets as cardsData } from '@mock';
 
 export default function RacketPage() {
   const brands = [...new Set(cardsData.map((racket) => racket.brand.name))];
