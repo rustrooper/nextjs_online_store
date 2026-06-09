@@ -7,9 +7,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ru">
       <body className="flex min-h-screen flex-col text-gray-500">
-        <Header></Header>
+        <Header/>
         <main className="flex-1 p-6">{children}</main>
-        <Footer></Footer>
+        <Footer/>
       </body>
     </html>
   );

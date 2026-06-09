@@ -10,7 +10,7 @@ export default function HomePage() {
         <h2 className="text-lg font-medium text-black">Ракетки</h2>
         <Link className="flex items-center gap-1 text-blue-500" href="/rackets">
           Все
-          <ArrowUpRight size={24}></ArrowUpRight>
+          <ArrowUpRight size={24} />
         </Link>
       </div>
       <div className="mt-4 grid grid-cols-3 gap-4">
