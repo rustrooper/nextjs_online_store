@@ -3,6 +3,7 @@ import { NavLink } from './NavLink';
 const links = [
   { href: '/', label: 'Главная' },
   { href: '/rackets', label: 'Ракетки' },
+  { href: '/rackets/top-10', label: 'Top10' },
 ];
 
 export const Header = () => {
