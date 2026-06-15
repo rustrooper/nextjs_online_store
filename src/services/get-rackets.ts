@@ -8,12 +8,14 @@ interface Params {
 }
 
 export const getRackets = async ({ page, limit }: Params): ServiceResponse<Racket[]> => {
-  const res = await fetch(`${BASE_API_URL}/products?page=${page}&limit=${limit}`);
-
-  if (!res.ok) {
+  try {
+    const res = await fetch(`${BASE_API_URL}/products?page=${page}&limit=${limit}`);
+    if (!res.ok) {
+      return { isError: true, data: undefined };
+    }
+    const data = await res.json();
+    return { isError: false, data };
+  } catch {
     return { isError: true, data: undefined };
   }
-
-  const data = await res.json();
-  return { isError: false, data };
 };
