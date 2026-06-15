@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
+
+import { CustomLink } from './CustomLink';
 
 interface Props {
   id: number;
@@ -10,11 +11,11 @@ interface Props {
 
 export const RacketCard = ({ id, name, imageUrl, showName = true }: Props) => {
   return (
-    <Link href={`/racket/${id}`} className="flex flex-col gap-2">
+    <CustomLink href={`/racket/${id}`} className="flex flex-col gap-2">
       <div className="relative aspect-square w-full overflow-hidden rounded-lg border border-gray-300">
         <Image src={imageUrl} alt={name} fill className="object-contain" />
       </div>
       {showName && <span>{name}</span>}
-    </Link>
+    </CustomLink>
   );
 };
