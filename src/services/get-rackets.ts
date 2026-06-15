@@ -8,9 +8,7 @@ interface Params {
 }
 
 export const getRackets = async ({ page, limit }: Params): ServiceResponse<Racket[]> => {
-  const res = await fetch(`${BASE_API_URL}/products?page=${page}&limit=${limit}`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(`${BASE_API_URL}/products?page=${page}&limit=${limit}`);
 
   if (!res.ok) {
     return { isError: true, data: undefined };

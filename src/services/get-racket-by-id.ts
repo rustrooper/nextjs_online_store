@@ -3,7 +3,7 @@ import { Racket } from '@/types/racket';
 import { ServiceResponse } from '@/types/response';
 
 export const getRacketById = async (id: string): ServiceResponse<Racket> => {
-  const res = await fetch(`${BASE_API_URL}/product/${id}`, { cache: 'no-store' });
+  const res = await fetch(`${BASE_API_URL}/product/${id}`);
 
   if (res.status === 404) {
     return { isError: false, data: undefined };

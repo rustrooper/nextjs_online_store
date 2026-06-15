@@ -3,7 +3,7 @@ import { Racket } from '@/types/racket';
 import { ServiceResponse } from '@/types/response';
 
 export const getTop10 = async (): ServiceResponse<Racket[]> => {
-  const res = await fetch(`${BASE_API_URL}/top-10`, { cache: 'no-store' });
+  const res = await fetch(`${BASE_API_URL}/top-10`);
 
   if (!res.ok) {
     return { isError: true, data: undefined };
