@@ -2,11 +2,12 @@ import { Suspense } from 'react';
 import { RacketsContainer } from '@/components/Rackets/RacketsContainer';
 import { getRackets } from '@/services/get-rackets';
 import { getTop10 } from '@/services/get-top-10';
+import { RacketsSkeleton } from '@/components/Rackets/RacketsSkeleton';
 
 export default function HomePage() {
   return (
     <div className="flex flex-col gap-10">
-      <Suspense fallback={<div>Загружаем ракетки…</div>}>
+      <Suspense fallback={<RacketsSkeleton />}>
         <RacketsContainer
           title="Ракетки"
           hrefToAll="/rackets"
