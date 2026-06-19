@@ -3,6 +3,12 @@ import { RacketsContainer } from '@/components/Rackets/RacketsContainer';
 import { getRackets } from '@/services/get-rackets';
 import { getTop10 } from '@/services/get-top-10';
 import { RacketsSkeleton } from '@/components/Rackets/RacketsSkeleton';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Магазин теннисных ракеток',
+  description: 'Главная страница магазина',
+};
 
 export default function HomePage() {
   return (

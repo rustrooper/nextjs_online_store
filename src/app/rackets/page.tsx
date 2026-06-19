@@ -1,7 +1,13 @@
 import { BrandFilter } from '@/components/BrandFilter';
 import { RacketsContainer } from '@/components/Rackets/RacketsContainer';
 import { getRackets } from '@/services/get-rackets';
+import { Metadata } from 'next';
 import { Suspense } from 'react';
+
+export const metadata: Metadata = {
+  title: 'Tennis store - ракетки',
+  description: 'Каталог теннисных ракеток',
+};
 
 export default function RacketsPage() {
   return (

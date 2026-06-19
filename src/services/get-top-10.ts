@@ -4,7 +4,12 @@ import { ServiceResponse } from '@/types/response';
 
 export const getTop10 = async (): ServiceResponse<Racket[]> => {
   try {
-    const res = await fetch(`${BASE_API_URL}/top-10`);
+    const res = await fetch(`${BASE_API_URL}/top-10`, {
+      next: {
+        tags: ['top-10'],
+        revalidate: 3600,
+      },
+    });
 
     if (!res.ok) {
       return { isError: true, data: undefined };
