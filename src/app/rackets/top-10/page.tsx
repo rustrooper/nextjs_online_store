@@ -1,17 +1,14 @@
 import { RacketsContainer } from '@/components/Rackets/RacketsContainer';
 import { getTop10 } from '@/services/get-top-10';
-import { Metadata } from 'next';
-import { Suspense } from 'react';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Tennis store - top 10',
-  description: 'Страница с топ-10 ракетками',
+  title: 'Топ-10',
+  description: 'Десять самых популярных теннисных ракеток',
 };
 
 export default function Top10Page() {
   return (
-    <Suspense fallback={<div>Загружаем топ-10…</div>}>
-      <RacketsContainer title="Топ-10 ракеток" load={getTop10} />
-    </Suspense>
+    <RacketsContainer title="Топ-10 ракеток" load={getTop10} />
   );
 }

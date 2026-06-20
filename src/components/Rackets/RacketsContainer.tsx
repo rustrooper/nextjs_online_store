@@ -1,7 +1,10 @@
+import { Suspense } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { ServiceResponse } from '@/types/response';
 import { Racket } from '@/types/racket';
-import { RacketsSelection } from '@/components/Rackets/RacketsSelection';
-import { RacketCard } from '@/components/RacketCard';
+import { RacketCards } from '@/components/Rackets/RacketCards';
+import { RacketsSkeleton } from '@/components/Rackets/RacketsSkeleton';
+import { NavLink } from '../NavLink';
 
 interface Props {
   title: string;
@@ -9,18 +12,23 @@ interface Props {
   load: () => ServiceResponse<Racket[]>;
 }
 
-export const RacketsContainer = async ({ title, hrefToAll, load }: Props) => {
-  const { isError, data } = await load();
-
-  if (isError || !data) {
-    return <div className="text-red-500">Не удалось загрузить ракетки</div>;
-  }
-
+export const RacketsContainer = ({ title, hrefToAll, load }: Props) => {
   return (
-    <RacketsSelection title={title} hrefToAll={hrefToAll}>
-      {data.map((racket) => (
-        <RacketCard key={racket.id} id={racket.id} name={racket.name} imageUrl={racket.imageUrl} />
-      ))}
-    </RacketsSelection>
+    <section>
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg font-medium text-black">{title}</h2>
+        {hrefToAll && (
+          <NavLink className="flex items-center gap-1 text-blue-500" href={hrefToAll}>
+            Все
+            <ArrowUpRight size={24} />
+          </NavLink>
+        )}
+      </div>
+      <div className="mt-4 grid grid-cols-3 gap-4">
+        <Suspense fallback={<RacketsSkeleton count={6} />}>
+          <RacketCards load={load} />
+        </Suspense>
+      </div>
+    </section>
   );
 };

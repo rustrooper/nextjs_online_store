@@ -1,31 +1,5 @@
 @import 'tailwindcss';
 
-.link-hint {
-  display: inline-block;
-  width: 0.6em;
-  height: 0.6em;
-  border-radius: 9999px;
-  background: currentColor;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.link-hint.is-pending {
-  visibility: visible;
-  animation-name: fadeIn, pulse;
-  animation-duration: 200ms, 1s;
-  animation-delay: 100ms, 100ms;
-  animation-iteration-count: 1, infinite;
-  animation-fill-mode: forwards, none;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 0.5;
-  }
-}
-@keyframes pulse {
-  50% {
-    opacity: 0.15;
-  }
+@theme {
+  --color-accent: #f97316;
 }

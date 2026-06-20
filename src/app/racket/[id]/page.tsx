@@ -1,5 +1,5 @@
 import { RacketContainer } from '@/components/Racket/RacketContainer';
-import { getRacketById } from '@/services/get-racket-by-id';
+import { getRacketMetadataById } from '@/services/get-racket-metadata-by-id';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({
@@ -8,7 +8,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const { data } = await getRacketById(id);
+  const { data } = await getRacketMetadataById(id);
 
   if (!data) {
     return { title: 'Ракетка не найдена' };
@@ -20,8 +20,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function RacketPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function RacketPage(props: PageProps<'/racket/[id]'>) {
+  const { id } = await props.params;
 
   return <RacketContainer id={id} />;
 }
