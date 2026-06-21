@@ -1,3 +1,5 @@
+import { Star } from 'lucide-react';
+
 import { Racket as RacketType } from '@/types/racket';
 import { RacketCard } from '../RacketCard';
 
@@ -15,12 +17,15 @@ export const Racket = ({ racket }: Props) => {
         {racket.userData && (
           <button
             type="button"
-            className="mt-2 flex w-fit items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-black"
+            className="mt-2 flex w-fit cursor-pointer items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-black hover:border-gray-400"
           >
-            <span>{racket.userData.isFavorite ? '★' : '☆'}</span>
-            <span>
-              {racket.userData.isFavorite ? 'В избранном' : 'В избранное'}
-            </span>
+            <Star
+              size={20}
+              className={
+                racket.userData.isFavorite ? 'fill-yellow-400 text-yellow-400' : 'text-gray-400'
+              }
+            />
+            <span>{racket.userData.isFavorite ? 'В избранном' : 'В избранное'}</span>
           </button>
         )}
       </div>

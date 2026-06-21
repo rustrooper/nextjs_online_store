@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, FC, PropsWithChildren } from 'react';
+import { createContext, PropsWithChildren } from 'react';
 
 import { User } from '@/types/user';
 
@@ -10,6 +10,6 @@ type Props = PropsWithChildren & {
 
 export const UserContext = createContext<User | undefined>(undefined);
 
-export const UserProvider: FC<Props> = ({ user, children }) => {
+export const UserProvider = ({ user, children }: Props) => {
   return <UserContext value={user}>{children}</UserContext>;
 };

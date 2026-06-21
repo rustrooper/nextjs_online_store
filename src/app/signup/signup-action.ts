@@ -6,10 +6,7 @@ import { BASE_API_URL } from '@/constants/api';
 import { parseSetCookie } from '@/helpers/parse-set-cookie';
 import { AuthState } from '@/app/login/login-action';
 
-export const signupAction = async (
-  state: AuthState,
-  formData: FormData
-): Promise<AuthState> => {
+export const signupAction = async (state: AuthState, formData: FormData): Promise<AuthState> => {
   const login = formData.get('login')?.toString() ?? '';
   const password = formData.get('password')?.toString() ?? '';
 
