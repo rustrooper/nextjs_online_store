@@ -12,6 +12,17 @@ export const Racket = ({ racket }: Props) => {
         <span>{racket.brand.name}</span>
         <h1 className="text-2xl font-medium text-black">{racket.name}</h1>
         <p className="text-lg text-black">{racket.description}</p>
+        {racket.userData && (
+          <button
+            type="button"
+            className="mt-2 flex w-fit items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-black"
+          >
+            <span>{racket.userData.isFavorite ? '★' : '☆'}</span>
+            <span>
+              {racket.userData.isFavorite ? 'В избранном' : 'В избранное'}
+            </span>
+          </button>
+        )}
       </div>
       <div className="shrink-0 basis-2/5">
         <RacketCard id={racket.id} name={racket.name} imageUrl={racket.imageUrl} showName={false} />
