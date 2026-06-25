@@ -13,11 +13,7 @@ export const NavLink = (props: ComponentProps<typeof CustomLink>) => {
   const isActive = pathname === href;
 
   return (
-    <CustomLink
-      href={href}
-      className={cn(className, isActive && 'text-orange-500')}
-      {...rest}
-    >
+    <CustomLink href={href} className={cn(className, isActive && 'text-accent')} {...rest}>
       {children}
     </CustomLink>
   );
