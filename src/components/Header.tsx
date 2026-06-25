@@ -18,9 +18,8 @@ export const Header = () => {
 
   return (
     <header className="flex items-center border-b border-gray-300 px-6 py-4">
-      <div className="flex-1" />
-      <h1 className="flex-1 text-center text-xl font-medium">TENNIS STORE</h1>
-      <nav className="flex flex-1 items-center justify-end gap-2">
+      <h1 className="flex-1 text-xl font-medium">TENNIS STORE</h1>
+      <nav className="flex flex-1 items-center justify-center gap-2">
         {links.map(({ href, label }) => {
           return (
             <NavLink key={href} href={href}>
@@ -28,6 +27,8 @@ export const Header = () => {
             </NavLink>
           );
         })}
+      </nav>
+      <div className="flex flex-1 items-center justify-end gap-2">
         {user?.login ? (
           <>
             <span className="text-black">{user.login}</span>
@@ -39,7 +40,7 @@ export const Header = () => {
             <NavLink href="/signup">Регистрация</NavLink>
           </>
         )}
-      </nav>
+      </div>
     </header>
   );
 };
