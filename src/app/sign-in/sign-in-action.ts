@@ -10,10 +10,7 @@ export type AuthState = {
   redirectTo?: string;
 };
 
-export const loginAction = async (
-  state: AuthState,
-  formData: FormData
-): Promise<AuthState> => {
+export const loginAction = async (state: AuthState, formData: FormData): Promise<AuthState> => {
   const login = formData.get('login')?.toString() ?? '';
   const password = formData.get('password')?.toString() ?? '';
 

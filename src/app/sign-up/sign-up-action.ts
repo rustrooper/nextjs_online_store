@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 
 import { BASE_API_URL } from '@/constants/api';
 import { parseSetCookie } from '@/helpers/parse-set-cookie';
-import { AuthState } from '@/app/login/login-action';
+import { AuthState } from '@/app/sign-in/sign-in-action';
 
 export const signupAction = async (state: AuthState, formData: FormData): Promise<AuthState> => {
   const login = formData.get('login')?.toString() ?? '';

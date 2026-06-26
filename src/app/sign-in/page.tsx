@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect } from 'react';
 
-import { loginAction } from './login-action';
+import { loginAction } from './sign-in-action';
 
 export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(loginAction, {});
@@ -11,7 +11,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (redirectTo) {
-      document.location.assign(redirectTo);
+      location.assign(redirectTo);
     }
   }, [redirectTo]);
 
@@ -43,7 +43,7 @@ export default function LoginPage() {
 
       <button
         disabled={isPending}
-        className="rounded-lg bg-accent px-4 py-2 text-white disabled:opacity-50"
+        className="bg-accent rounded-lg px-4 py-2 text-white disabled:opacity-50"
       >
         {isPending ? 'Входим…' : 'Войти'}
       </button>
