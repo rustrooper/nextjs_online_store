@@ -1,5 +1,6 @@
 import { Racket as RacketType } from '@/types/racket';
 import { RacketCard } from '../RacketCard';
+import { ToggleFavoriteButton } from '../ToggleFavoriteButton';
 
 interface Props {
   racket: RacketType;
@@ -12,6 +13,12 @@ export const Racket = ({ racket }: Props) => {
         <span>{racket.brand.name}</span>
         <h1 className="text-2xl font-medium text-black">{racket.name}</h1>
         <p className="text-lg text-black">{racket.description}</p>
+        {racket.userData && (
+          <ToggleFavoriteButton
+            productId={racket.id}
+            isFavorite={racket.userData.isFavorite}
+          />
+        )}
       </div>
       <div className="shrink-0 basis-2/5">
         <RacketCard id={racket.id} name={racket.name} imageUrl={racket.imageUrl} showName={false} />

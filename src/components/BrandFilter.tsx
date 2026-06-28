@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const BrandFilter = ({ brands }: Props) => {
-  // Пока только визуальное состояние выбора, без реальной фильтрации.
   const [selected, setSelected] = useState('All');
 
   const options = ['All', ...brands];
