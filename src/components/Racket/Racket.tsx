@@ -14,10 +14,7 @@ export const Racket = ({ racket }: Props) => {
         <h1 className="text-2xl font-medium text-black">{racket.name}</h1>
         <p className="text-lg text-black">{racket.description}</p>
         {racket.userData && (
-          <ToggleFavoriteButton
-            productId={racket.id}
-            isFavorite={racket.userData.isFavorite}
-          />
+          <ToggleFavoriteButton racketId={racket.id} isFavorite={racket.userData.isFavorite} />
         )}
       </div>
       <div className="shrink-0 basis-2/5">

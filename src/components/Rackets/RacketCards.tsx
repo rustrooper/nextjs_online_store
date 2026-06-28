@@ -1,6 +1,6 @@
 import { ServiceResponse } from '@/types/response';
 import { Racket } from '@/types/racket';
-import { RacketCard } from '@/components/RacketCard';
+import { RacketCardItem } from '@/components/Rackets/RacketCardItem';
 
 interface Props {
   load: () => ServiceResponse<Racket[]>;
@@ -16,7 +16,7 @@ export const RacketCards = async ({ load }: Props) => {
   return (
     <>
       {data.map((racket) => (
-        <RacketCard key={racket.id} id={racket.id} name={racket.name} imageUrl={racket.imageUrl} />
+        <RacketCardItem key={racket.id} racket={racket} />
       ))}
     </>
   );
