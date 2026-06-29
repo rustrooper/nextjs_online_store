@@ -2,13 +2,12 @@ import { useContext, useEffect } from 'react';
 import { FavoriteContext } from '@/providers/favorite/FavoriteProvider';
 import { Racket } from '@/types/racket';
 
-export const useIsFavoriteById = ({
-  id,
-  isFavoriteInitial,
-}: {
+interface FavoriteHookType {
   id: Racket['id'];
   isFavoriteInitial: boolean;
-}) => {
+}
+
+export const useIsFavoriteById = ({ id, isFavoriteInitial }: FavoriteHookType) => {
   const { favorites } = useContext(FavoriteContext);
 
   const isFavoriteGlobal = favorites[id] ?? null;
@@ -24,18 +23,12 @@ export const useSetIsFavorite = () => {
   return setIsFavorite;
 };
 
-// export const useHydrateFavorite = ({
-//   id,
-//   isFavoriteInitial,
-// }: {
-//   id: Racket['id'];
-//   isFavoriteInitial: boolean;
-// }) => {
-//   const setIsFavorite = useSetIsFavorite();
+export const useHydrateFavorite = ({ id, isFavoriteInitial }: FavoriteHookType) => {
+  const setIsFavorite = useSetIsFavorite();
 
-//   useEffect(() => {
-//     if (typeof isFavoriteInitial === 'boolean') {
-//       setIsFavorite({ isFavorite: isFavoriteInitial, id });
-//     }
-//   }, [id, isFavoriteInitial, setIsFavorite]);
-// };
+  useEffect(() => {
+    if (typeof isFavoriteInitial === 'boolean') {
+      setIsFavorite({ isFavorite: isFavoriteInitial, id });
+    }
+  }, [id, isFavoriteInitial, setIsFavorite]);
+};

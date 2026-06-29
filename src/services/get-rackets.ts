@@ -1,6 +1,7 @@
 import { BASE_API_URL } from '@/constants/api';
 import { ServiceResponse } from '@/types/response';
 import { Racket } from '@/types/racket';
+import { cookies } from 'next/headers';
 
 interface Params {
   page: number;
@@ -9,7 +10,12 @@ interface Params {
 
 export const getRackets = async ({ page, limit }: Params): ServiceResponse<Racket[]> => {
   try {
-    const res = await fetch(`${BASE_API_URL}/products?page=${page}&limit=${limit}`);
+    const cookieStore = await cookies();
+    const res = await fetch(`${BASE_API_URL}/products?page=${page}&limit=${limit}`, {
+      headers: {
+        Cookie: cookieStore.toString(),
+      },
+    });
     if (!res.ok) {
       return { isError: true, data: undefined };
     }
