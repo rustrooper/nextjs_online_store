@@ -30,6 +30,5 @@ export const useHydrateFavorite = ({ id, isFavoriteInitial }: FavoriteHookType) 
     if (typeof isFavoriteInitial === 'boolean') {
       setIsFavorite({ isFavorite: isFavoriteInitial, id });
     }
-    console.log('гидрация стора по id', id);
   }, [id, isFavoriteInitial, setIsFavorite]);
 };
