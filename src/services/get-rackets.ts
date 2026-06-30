@@ -6,12 +6,20 @@ import { cookies } from 'next/headers';
 interface Params {
   page: number;
   limit: number;
+  brand?: string;
 }
 
-export const getRackets = async ({ page, limit }: Params): ServiceResponse<Racket[]> => {
+export const getRackets = async ({ page, limit, brand }: Params): ServiceResponse<Racket[]> => {
   try {
     const cookieStore = await cookies();
-    const res = await fetch(`${BASE_API_URL}/products?page=${page}&limit=${limit}`, {
+    const params = new URLSearchParams({
+      page: String(page),
+      limit: String(limit),
+    });
+    if (brand) {
+      params.set('brand', brand);
+    }
+    const res = await fetch(`${BASE_API_URL}/products?${params.toString()}`, {
       headers: {
         Cookie: cookieStore.toString(),
       },
