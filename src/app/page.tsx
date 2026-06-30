@@ -14,7 +14,7 @@ export default function HomePage() {
       <RacketsContainer
         title="Ракетки"
         hrefToAll="/rackets"
-        load={() => getRackets({ page: 1, limit: 10 })}
+        load={() => getRackets({ page: 1, limit: 5 })}
       />
       <RacketsContainer title="Топ-10" hrefToAll="/rackets/top-10" load={getTop10} />
     </div>

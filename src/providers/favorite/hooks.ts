@@ -10,9 +10,9 @@ interface FavoriteHookType {
 export const useIsFavoriteById = ({ id, isFavoriteInitial }: FavoriteHookType) => {
   const { favorites } = useContext(FavoriteContext);
 
-  const isFavoriteGlobal = favorites[id] ?? null;
+  const isFavoriteContext = favorites[id] ?? null;
 
-  const isFavorite = isFavoriteGlobal ?? isFavoriteInitial;
+  const isFavorite = isFavoriteContext ?? isFavoriteInitial;
 
   return isFavorite;
 };
@@ -30,5 +30,6 @@ export const useHydrateFavorite = ({ id, isFavoriteInitial }: FavoriteHookType) 
     if (typeof isFavoriteInitial === 'boolean') {
       setIsFavorite({ isFavorite: isFavoriteInitial, id });
     }
+    console.log('гидрация стора по id', id);
   }, [id, isFavoriteInitial, setIsFavorite]);
 };

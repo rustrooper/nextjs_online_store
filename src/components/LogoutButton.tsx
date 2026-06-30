@@ -17,7 +17,11 @@ export const LogoutButton = () => {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <button onClick={() => startTransition(handleLogout)} disabled={isPending}>
+    <button
+      onClick={() => startTransition(handleLogout)}
+      disabled={isPending}
+      className="cursor-pointer"
+    >
       Выйти
     </button>
   );
