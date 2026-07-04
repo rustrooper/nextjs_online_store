@@ -1,13 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
 interface Props {
   brands: string[];
 }
 
 export const BrandFilter = ({ brands }: Props) => {
-  const [selected, setSelected] = useState('All');
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const selectedBrand = searchParams.get('brand') ?? 'All';
+
+  const handleSelect = (brand: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (brand === 'All') {
+      params.delete('brand');
+    } else params.set('brand', brand);
+
+    const newURL = params.toString() ? `${pathname}?${params.toString()}` : `${pathname}`;
+
+    router.replace(newURL);
+  };
 
   const options = ['All', ...brands];
 
@@ -16,13 +32,13 @@ export const BrandFilter = ({ brands }: Props) => {
       <span className="text-sm font-medium text-gray-400">Бренд</span>
       <ul className="mt-2 flex flex-col gap-1">
         {options.map((brand) => {
-          const isActive = brand === selected;
+          const isActive = brand === selectedBrand;
 
           return (
             <li key={brand}>
               <button
                 type="button"
-                onClick={() => setSelected(brand)}
+                onClick={() => handleSelect(brand)}
                 className={`flex items-center gap-2 text-sm transition-colors ${
                   isActive ? 'font-medium text-black' : 'text-gray-500 hover:text-black'
                 }`}

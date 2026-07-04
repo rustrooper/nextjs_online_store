@@ -2,7 +2,7 @@
 
 import { useContext } from 'react';
 
-import { UserContext } from '@/providers/UserProvider';
+import { UserContext } from '@/providers/user/UserProvider';
 
 import { LogoutButton } from './LogoutButton';
 import { NavLink } from './NavLink';

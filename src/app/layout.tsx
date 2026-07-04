@@ -3,9 +3,10 @@ import { Header } from '@/components/Header';
 import { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
-import { UserProvider } from '@/providers/UserProvider';
+import { UserProvider } from '@/providers/user/UserProvider';
 import { getUser } from '@/services/get-user';
 import './global.css';
+import { FavoriteProvider } from '@/providers/favorite/FavoriteProvider';
 
 export const metadata: Metadata = {
   title: {
@@ -28,9 +29,11 @@ export default async function RootLayout({ children }: PropsWithChildren) {
           crawlSpeed={400}
         />
         <UserProvider user={user}>
-          <Header />
-          <main className="flex-1 p-6">{children}</main>
-          <Footer />
+          <FavoriteProvider>
+            <Header />
+            <main className="flex-1 p-6">{children}</main>
+            <Footer />
+          </FavoriteProvider>
         </UserProvider>
       </body>
     </html>

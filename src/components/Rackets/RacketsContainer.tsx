@@ -24,8 +24,8 @@ export const RacketsContainer = ({ title, hrefToAll, load }: Props) => {
           </NavLink>
         )}
       </div>
-      <div className="mt-4 grid grid-cols-3 gap-4">
-        <Suspense fallback={<RacketsSkeleton count={6} />}>
+      <div className="mt-4 grid grid-cols-5 gap-4">
+        <Suspense fallback={<RacketsSkeleton count={5} />}>
           <RacketCards load={load} />
         </Suspense>
       </div>
