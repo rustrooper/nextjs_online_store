@@ -3,7 +3,7 @@
 import { use } from 'react';
 
 import { Racket } from '@/types/racket';
-import { RacketCard } from '@/components/RacketCard';
+import { RacketPreview } from '@/components/RacketPreview';
 import { ToggleFavoriteButton } from '@/components/ToggleFavoriteButton';
 import { UserContext } from '@/providers/user/UserProvider';
 import { useHydrateFavorite, useIsFavoriteById } from '@/providers/favorite/hooks';
@@ -13,7 +13,7 @@ interface Props {
   racket: Racket;
 }
 
-export const RacketCardItem = ({ racket }: Props) => {
+export const RacketGridItem = ({ racket }: Props) => {
   const user = use(UserContext);
 
   const isFavoriteInitial = Boolean(racket.userData?.isFavorite);
@@ -33,7 +33,7 @@ export const RacketCardItem = ({ racket }: Props) => {
           height={24}
         />
       )}
-      <RacketCard id={racket.id} name={racket.name} imageUrl={racket.imageUrl} />
+      <RacketPreview id={racket.id} name={racket.name} imageUrl={racket.imageUrl} />
       {user && <ToggleFavoriteButton racketId={racket.id} isFavorite={isFavoriteInitial} />}
     </div>
   );

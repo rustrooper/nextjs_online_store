@@ -1,4 +1,4 @@
-export function RacketSkeleton() {
+export function RacketDetailsSkeleton() {
   return (
     <div className="flex items-start gap-20">
       <div className="flex flex-1 flex-col gap-2 pt-20">

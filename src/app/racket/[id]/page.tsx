@@ -1,4 +1,4 @@
-import { RacketContainer } from '@/components/Racket/RacketContainer';
+import { RacketDetailsContainer } from '@/components/RacketDetails/RacketDetailsContainer';
 import { getRacketMetadataById } from '@/services/get-racket-metadata-by-id';
 import type { Metadata } from 'next';
 
@@ -23,5 +23,5 @@ export async function generateMetadata({
 export default async function RacketPage(props: PageProps<'/racket/[id]'>) {
   const { id } = await props.params;
 
-  return <RacketContainer id={id} />;
+  return <RacketDetailsContainer id={id} />;
 }

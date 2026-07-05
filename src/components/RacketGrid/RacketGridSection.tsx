@@ -2,8 +2,8 @@ import { Suspense } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { ServiceResponse } from '@/types/response';
 import { Racket } from '@/types/racket';
-import { RacketCards } from '@/components/Rackets/RacketCards';
-import { RacketsSkeleton } from '@/components/Rackets/RacketsSkeleton';
+import { RacketGrid } from '@/components/RacketGrid/RacketGrid';
+import { RacketGridSkeleton } from '@/components/RacketGrid/RacketGridSkeleton';
 import { NavLink } from '../NavLink';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
   load: () => ServiceResponse<Racket[]>;
 }
 
-export const RacketsContainer = ({ title, hrefToAll, load }: Props) => {
+export const RacketGridSection = ({ title, hrefToAll, load }: Props) => {
   return (
     <section>
       <div className="flex items-center justify-between">
@@ -25,8 +25,8 @@ export const RacketsContainer = ({ title, hrefToAll, load }: Props) => {
         )}
       </div>
       <div className="mt-4 grid grid-cols-5 gap-4">
-        <Suspense fallback={<RacketsSkeleton count={5} />}>
-          <RacketCards load={load} />
+        <Suspense fallback={<RacketGridSkeleton count={5} />}>
+          <RacketGrid load={load} />
         </Suspense>
       </div>
     </section>

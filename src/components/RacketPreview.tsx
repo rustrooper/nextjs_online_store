@@ -9,7 +9,7 @@ interface Props {
   showName?: boolean;
 }
 
-export const RacketCard = ({ id, name, imageUrl, showName = true }: Props) => {
+export const RacketPreview = ({ id, name, imageUrl, showName = true }: Props) => {
   return (
     <CustomLink href={`/racket/${id}`} className="flex flex-col gap-2">
       <div className="relative aspect-square w-full overflow-hidden rounded-lg border border-gray-300">
