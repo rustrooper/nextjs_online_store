@@ -24,19 +24,23 @@ const fetcher = async (key: string) => {
 export const RacketsPaginatedContainer = () => {
   const searchParams = useSearchParams();
   const page = parseInt(searchParams.get('page') || '') || 1;
+  const brand = searchParams.get('brand');
 
-  const { data, isLoading, error } = useSWR<Racket[]>(getRacketKey(page), fetcher, {
+  const { data, error, isValidating } = useSWR<Racket[]>(getRacketKey(page, brand), fetcher, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
   });
 
   const updatePage = (page: number) => {
-    window.history.pushState({}, '', `?page=${page}`);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('page', page.toString());
+    if (brand) params.set('brand', brand.toString());
+    window.history.pushState({}, '', `?${params.toString()}`);
   };
 
   if (error) return <div className="col-span-full text-red-500">Не удалось загрузить ракетки</div>;
 
-  if (isLoading || !data)
+  if (!data)
     return (
       <div className="mt-4 grid grid-cols-5 gap-4">
         <RacketGridSkeleton count={LIMIT} />
@@ -48,9 +52,11 @@ export const RacketsPaginatedContainer = () => {
   return (
     <>
       <div className="mt-4 grid grid-cols-5 gap-4">
-        {data.map((r) => (
-          <RacketGridItem key={r.id} racket={r} />
-        ))}
+        {isValidating ? (
+          <RacketGridSkeleton count={LIMIT} />
+        ) : (
+          data.map((r) => <RacketGridItem key={r.id} racket={r} />)
+        )}
       </div>
       <div className="mt-6 flex items-center justify-center gap-4">
         {page > 1 && (

@@ -15,6 +15,7 @@ export const BrandFilter = ({ brands }: Props) => {
 
   const handleSelect = (brand: string) => {
     const params = new URLSearchParams(searchParams.toString());
+    params.set('page', '1');
 
     if (brand === 'All') {
       params.delete('brand');
@@ -39,7 +40,7 @@ export const BrandFilter = ({ brands }: Props) => {
               <button
                 type="button"
                 onClick={() => handleSelect(brand)}
-                className={`flex items-center gap-2 text-sm transition-colors ${
+                className={`flex cursor-pointer items-center gap-2 text-sm transition-colors ${
                   isActive ? 'font-medium text-black' : 'text-gray-500 hover:text-black'
                 }`}
               >
