@@ -23,8 +23,12 @@ export default async function Page({ searchParams }: PageProps<'/rackets-paginat
 
   return (
     <SWRConfig value={{ fallback: { [getRacketKey(pageNumber, brandParam)]: data } }}>
-      <BrandFilter brands={brands} />
-      <RacketsPaginatedContainer />
+      <div className="flex gap-8">
+        <BrandFilter brands={brands} />
+        <div className="flex-1">
+          <RacketsPaginatedContainer />
+        </div>
+      </div>
     </SWRConfig>
   );
 }
