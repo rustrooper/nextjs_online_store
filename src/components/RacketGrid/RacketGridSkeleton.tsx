@@ -1,4 +1,4 @@
-export function RacketsSkeleton({ count = 6 }: { count?: number }) {
+export function RacketGridSkeleton({ count = 6 }: { count?: number }) {
   return (
     <>
       {Array.from({ length: count }).map((_, i) => (

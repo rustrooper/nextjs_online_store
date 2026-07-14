@@ -1,12 +1,12 @@
 import { getRacketById } from '@/services/get-racket-by-id';
 import { notFound } from 'next/navigation';
-import { Racket } from '@/components/Racket/Racket';
+import { RacketDetails } from '@/components/RacketDetails/RacketDetails';
 
 interface Props {
   id: string;
 }
 
-export const RacketContainer = async ({ id }: Props) => {
+export const RacketDetailsContainer = async ({ id }: Props) => {
   const { isError, data } = await getRacketById(id);
 
   if (isError) {
@@ -17,5 +17,5 @@ export const RacketContainer = async ({ id }: Props) => {
     notFound();
   }
 
-  return <Racket racket={data} />;
+  return <RacketDetails racket={data} />;
 };

@@ -1,3 +1,3 @@
-import { RacketSkeleton } from '@/components/Racket/RacketSkeleton';
+import { RacketDetailsSkeleton } from '@/components/RacketDetails/RacketDetailsSkeleton';
 
-export default RacketSkeleton;
+export default RacketDetailsSkeleton;

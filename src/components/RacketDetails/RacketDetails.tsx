@@ -1,12 +1,12 @@
 import { Racket as RacketType } from '@/types/racket';
-import { RacketCard } from '../RacketCard';
+import { RacketPreview } from '../RacketPreview';
 import { ToggleFavoriteButton } from '../ToggleFavoriteButton';
 
 interface Props {
   racket: RacketType;
 }
 
-export const Racket = ({ racket }: Props) => {
+export const RacketDetails = ({ racket }: Props) => {
   return (
     <div className="flex items-start gap-20">
       <div className="flex flex-1 flex-col gap-2 pt-20">
@@ -18,7 +18,7 @@ export const Racket = ({ racket }: Props) => {
         )}
       </div>
       <div className="shrink-0 basis-2/5">
-        <RacketCard id={racket.id} name={racket.name} imageUrl={racket.imageUrl} showName={false} />
+        <RacketPreview id={racket.id} name={racket.name} imageUrl={racket.imageUrl} showName={false} />
       </div>
       <span className="flex-1 pt-20 text-3xl font-medium text-black">$ {racket.price}</span>
     </div>

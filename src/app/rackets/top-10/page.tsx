@@ -1,4 +1,4 @@
-import { RacketsContainer } from '@/components/Rackets/RacketsContainer';
+import { RacketGridSection } from '@/components/RacketGrid/RacketGridSection';
 import { getTop10 } from '@/services/get-top-10';
 import type { Metadata } from 'next';
 
@@ -9,6 +9,6 @@ export const metadata: Metadata = {
 
 export default function Top10Page() {
   return (
-    <RacketsContainer title="Топ-10 ракеток" load={getTop10} />
+    <RacketGridSection title="Топ-10 ракеток" load={getTop10} />
   );
 }

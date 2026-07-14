@@ -1,12 +1,12 @@
 import { ServiceResponse } from '@/types/response';
 import { Racket } from '@/types/racket';
-import { RacketCardItem } from '@/components/Rackets/RacketCardItem';
+import { RacketGridItem } from '@/components/RacketGrid/RacketGridItem';
 
 interface Props {
   load: () => ServiceResponse<Racket[]>;
 }
 
-export const RacketCards = async ({ load }: Props) => {
+export const RacketGrid = async ({ load }: Props) => {
   const { isError, data } = await load();
 
   if (isError || !data) {
@@ -16,7 +16,7 @@ export const RacketCards = async ({ load }: Props) => {
   return (
     <>
       {data.map((racket) => (
-        <RacketCardItem key={racket.id} racket={racket} />
+        <RacketGridItem key={racket.id} racket={racket} />
       ))}
     </>
   );
